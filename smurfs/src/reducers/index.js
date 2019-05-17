@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { LOGIN_START, LOGIN_SUCCESS } from '../actions';
+import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -34,21 +34,17 @@ const initialState = {
 
 export default function smurfReducer(state = initialState, action){
   switch(action.type){
-      case LOGIN_START:
+      case FETCH_SMURFS_START:
       return {
           ...state,
-          loggingIn: true,
+          fetchingSmurfs: true,
+          error: null,
       }
-      case LOGIN_SUCCESS:
+      case FETCH_SMURFS_SUCCESS:
       return {
-          ...state, 
-          loggingIn: false,
-      }
-      case LOGIN_FAILURE:
-      return{
-          ...state,
-          loggingIn: false,
-          error: action.payload,
+        ...state,
+        fetchingSmurfs: false,
+        smurfs: action.payload
       }
       default: 
       return state
