@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE } from '../actions';
+import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE, POST_SMURF_START, POST_SMURF_SUCCESS  } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -50,6 +50,18 @@ export default function smurfReducer(state = initialState, action){
       return {
         ...state,
         error: action.payload
+      }
+      case POST_SMURF_START:
+      return {
+        ...state,
+        addingSmurf: true,
+        error: ''
+      }
+      case POST_SMURF_SUCCESS: 
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: [...state.smurfs, action.payload]
       }
       default: 
       return state

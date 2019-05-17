@@ -7,15 +7,15 @@ import SmurfList from './SmurfList';
 class SmurfView extends React.Component {
 
     componentDidMount(){
-        console.log(this.props)
+        // console.log(this.props)
         this.props.getSmurfs()
     }
+
 
     render(){
         // console.log(this.props)
         return (
             <div>
-                <h1>My Smurfs</h1>
                 {
                     this.props.fetchingSmurfs && (<span>Loading...</span> )
                 }
