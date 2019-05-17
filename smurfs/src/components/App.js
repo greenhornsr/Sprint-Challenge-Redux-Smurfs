@@ -1,28 +1,63 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { addMySmurf } from '../actions';
+
 import './App.css';
 import SmurfView from './SmurfView';
-import AddSmurf from './AddSmurf';
 
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>My Redux Smurfs</h1>
-        <div>
-          <AddSmurf />
-          <SmurfView />
-        </div>
-        <div></div>
-        <div></div>
-      </div>
-    );
-  }
+
+
+class App extends React.Component{
+    state = {
+        name: '',
+        age: '',
+        height: '',
+    }
+
+    handleChange = event => {
+        this.setState({
+            ...this.state,
+            [event.target.name] : event.target.value
+        })
+    }
+
+    addMySmurf = (event) => {
+        // event.preventDefault();
+        // console.log(this.state)
+        this.props.addMySmurf(this.state)
+        this.setState({
+            name: '',
+            age: '',
+            height: '',
+        })
+    }
+
+    render(){
+        // console.log(this.state)
+        return (
+            <div className="App">
+              <h1>My Redux Smurfs</h1>
+              <form onSubmit={this.addMySmurf} >
+                  <label htmlFor="name">Smurf's name: </label>
+                  <input onChange={this.handleChange} name="name" value={this.props.name} type="text" placeholder="Gimme a name!" />
+                  <label htmlFor="age">Smurf's age: </label>
+                  <input onChange={this.handleChange} name="age" value={this.props.age} type="text" placeholder="How young am I?" />
+                  <label htmlFor="height">Smurf's height: </label>
+                  <input onChange={this.handleChange} name="height" value={this.props.height} type="text" placeholder="How tall am I?" />
+                  <button onClick={this.addMySmurf} >Add Me</button>
+              </form>
+              <SmurfView />
+            </div>
+        )
+    }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    ...state
+})
+
+export default connect(
+  mapStateToProps,
+    { addMySmurf }
+)(App)
+
