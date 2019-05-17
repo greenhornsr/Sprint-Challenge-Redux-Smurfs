@@ -1,7 +1,5 @@
 import React from "react";
 
-// import Smurf from "./Character";
-
 const Smurf = props => {
   return (
     <div>

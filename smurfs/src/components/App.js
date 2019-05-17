@@ -22,8 +22,8 @@ class App extends React.Component{
     }
 
     addMySmurf = (event) => {
-        // event.preventDefault();
-        // console.log(this.state)
+        event.preventDefault();
+        console.log(this.state)
         this.props.addMySmurf(this.state)
         this.setState({
             name: '',
@@ -39,12 +39,12 @@ class App extends React.Component{
               <h1>My Redux Smurfs</h1>
               <form onSubmit={this.addMySmurf} >
                   <label htmlFor="name">Smurf's name: </label>
-                  <input onChange={this.handleChange} name="name" value={this.props.name} type="text" placeholder="Gimme a name!" />
+                  <input required onChange={this.handleChange} name="name" value={this.props.name} type="text" placeholder="Gimme a name!" />
                   <label htmlFor="age">Smurf's age: </label>
-                  <input onChange={this.handleChange} name="age" value={this.props.age} type="text" placeholder="How young am I?" />
+                  <input required onChange={this.handleChange} name="age" value={this.props.age} type="text" placeholder="How young am I?" />
                   <label htmlFor="height">Smurf's height: </label>
-                  <input onChange={this.handleChange} name="height" value={this.props.height} type="text" placeholder="How tall am I?" />
-                  <button onClick={this.addMySmurf} >Add Me</button>
+                  <input required onChange={this.handleChange} name="height" value={this.props.height} type="text" placeholder="How tall am I?" />
+                  <button >Add Me</button>
               </form>
               <SmurfView />
             </div>

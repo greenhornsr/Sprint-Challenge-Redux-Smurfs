@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE, POST_SMURF_START, POST_SMURF_SUCCESS  } from '../actions';
+import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE, POST_SMURF_START, POST_SMURF_SUCCESS, POST_SMURF_FAILURE   } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -35,34 +35,47 @@ const initialState = {
 export default function smurfReducer(state = initialState, action){
   switch(action.type){
       case FETCH_SMURFS_START:
+      // console.log(state, action)
       return {
           ...state,
           fetchingSmurfs: true,
           error: null,
       }
       case FETCH_SMURFS_SUCCESS:
+      // console.log(state, action)
       return {
         ...state,
         fetchingSmurfs: false,
         smurfs: action.payload
       }
       case FETCH_SMURFS_FAILURE:
+      // console.log(state, action)
       return {
         ...state,
         error: action.payload
       }
       case POST_SMURF_START:
+            // console.log(state, action)
       return {
         ...state,
         addingSmurf: true,
         error: ''
       }
       case POST_SMURF_SUCCESS: 
+            // console.log(state, action)
       return {
         ...state,
         addingSmurf: false,
-        smurfs: [...state.smurfs, action.payload]
+        smurfs: action.payload
       }
+      case POST_SMURF_FAILURE:
+            // console.log(state, action)
+      return {
+        ...state, 
+        addingSmurf: false,
+        error: action.payload
+      }
+
       default: 
       return state
     }
