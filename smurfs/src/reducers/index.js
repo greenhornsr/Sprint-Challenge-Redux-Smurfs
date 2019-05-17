@@ -46,6 +46,11 @@ export default function smurfReducer(state = initialState, action){
         fetchingSmurfs: false,
         smurfs: action.payload
       }
+      case FETCH_SMURFS_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      }
       default: 
       return state
     }

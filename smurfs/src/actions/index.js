@@ -16,8 +16,8 @@ export const getSmurfs = () => dispatch => {
     dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data})
   })
   .catch(err => {
-    // console.log(err);
-    dispatch({ type: FETCH_SMURFS_FAILURE, payload: `${err.response.status} ${err.respons.statusText || "SOMETHING'S WRONG HERE" }`})
+    console.log(err.response);
+    dispatch({ type: FETCH_SMURFS_FAILURE, payload: `${err.response.status} ${err.response.statusText || "SOMETHING'S WRONG HERE" }`})
   })
 }
 

@@ -5,7 +5,7 @@ import React from "react";
 const Smurf = props => {
   return (
     <div>
-      <h1>{props.smurf.name}</h1>
+      <h3>{props.smurf.name}</h3>
       <p>{props.smurf.age} years old</p>
       <p>{props.smurf.height} tall</p>
     </div>

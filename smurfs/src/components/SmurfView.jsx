@@ -7,7 +7,7 @@ import SmurfList from './SmurfList';
 class SmurfView extends React.Component {
 
     componentDidMount(){
-        // console.log(this.props)
+        console.log(this.props)
         this.props.getSmurfs()
     }
 
@@ -15,6 +15,7 @@ class SmurfView extends React.Component {
         // console.log(this.props)
         return (
             <div>
+                <h1>My Smurfs</h1>
                 {
                     this.props.fetchingSmurfs && (<span>Loading...</span> )
                 }
@@ -32,7 +33,8 @@ class SmurfView extends React.Component {
 const mapStateToProps = state => (
     // console.log(state),
     {
-    smurfs: state.smurfs
+    smurfs: state.smurfs,
+    error: state.error
 })
 
 export default connect(
